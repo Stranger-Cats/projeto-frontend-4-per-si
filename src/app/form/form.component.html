@@ -1,0 +1,99 @@
+<form
+  #myForm="ngForm"
+  (ngSubmit)="onSubmit()"
+  class="w-full max-w-xl mobile-md:w-11/12 flex flex-col gap-4 font-mono rounded-xl border shadow p-10"
+  >
+  <h3 class="text-2xl font-bold">Novo produto</h3>
+
+  <input
+    class="px-4 py-2 rounded-lg border border-gray-300"
+    type="text"
+    id="name"
+    name="name"
+    [(ngModel)]="formData.name"
+    placeholder="Nome"
+    required
+  />
+  <textarea
+    class="px-4 py-2 rounded-lg border border-gray-300"
+    id="description"
+    name="description"
+    [(ngModel)]="formData.description"
+    placeholder="Descrição"
+    cols="30"
+    rows="05"
+    required
+  ></textarea>
+
+  <span class="flex gap-2 flex-col m-600:flex-row">
+    <input
+      class="px-4 py-2 rounded-lg border border-gray-300 min-w-[112px]"
+      type="number"
+      id="price"
+      name="price"
+      [(ngModel)]="formData.price"
+      placeholder="Preço"
+      required
+    />
+    
+    <input
+      class="px-4 py-2 rounded-lg border border-gray-300 min-w-[128px]"
+      type="number"
+      id="inventory"
+      name="inventory"
+      [(ngModel)]="formData.inventory"
+      placeholder="Estoque"
+      required
+    />
+  
+    <select
+      class="px-4 py-2 rounded-lg border border-gray-300 min-w-[224px]"
+      id="unit"
+      name="unit"
+      [(ngModel)]="formData.unit"
+      required
+    >
+    <option value="" disabled selected>Select your option</option>
+      <optgroup label="Peso">
+        <option value="mililiter">Mililitro</option>
+        <option value="mililiter">Litro</option>
+      </optgroup>
+      <optgroup label="Volume">
+        <option value="gram">Grama</option>
+        <option value="kilogram">Kilograma</option>
+        <option value="metric_ton">Tonelada</option>
+      </optgroup>
+    </select>
+  </span>
+
+  <input
+    class="px-4 py-2 w-full rounded-lg border border-gray-300"
+    type="text"
+    id="supplier"
+    name="supplier"
+    [(ngModel)]="formData.supplier"
+    placeholder="Fornecedor"
+    list="suppliers"
+    required
+  />
+  <datalist id="suppliers">
+    <option value="1">1</option>
+  </datalist>
+
+  <span class="flex gap-2">
+    <input
+      class="w-5 rounded-lg border border-gray-300"
+      type="checkbox"
+      id="active"
+      name="active"
+      [(ngModel)]="formData.active"
+    />
+    <label for="active">Ativo</label>
+  </span>
+
+  <button
+    type="submit"
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
+    [disabled]="myForm.invalid"
+  >Salvar</button>
+</form>
