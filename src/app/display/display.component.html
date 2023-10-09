@@ -1,0 +1,37 @@
+<div
+    class="w-full mobile-md:w-11/12 flex flex-col gap-4 font-mono rounded-xl border shadow p-10"
+  >
+  <ng-container *ngIf="products.length > 0; else noProducts">
+    <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+      <thead class="bg-gray-800 text-white">
+        <tr>
+          <th class="py-2 px-4 text-left">Nome</th>
+          <th class="py-2 px-4 text-left">Descrição</th>
+          <th class="py-2 px-4 text-left">Preço</th>
+          <th class="py-2 px-4 text-left">Inventário</th>
+          <th class="py-2 px-4 text-left">Unidade</th>
+          <th class="py-2 px-4 text-left">Fornecedor</th>
+          <th class="py-2 px-4 text-left">Ativo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td class="py-2 px-4">{{ product.name }}</td>
+          <td class="py-2 px-4">{{ product.description }}</td>
+          <td class="py-2 px-4">{{ product.price | currency }}</td>
+          <td class="py-2 px-4">{{ product.inventory }}</td>
+          <td class="py-2 px-4">{{ product.unit }}</td>
+          <td class="py-2 px-4">{{ product.supplier }}</td>
+          <td class="py-2 px-4">
+            <span *ngIf="product.active" class="text-green-500">Active</span>
+            <span *ngIf="!product.active" class="text-red-500">Inactive</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>    
+  </ng-container>
+  <ng-template #noProducts>
+    <!-- Display 'No products saved' message -->
+    <p class="text-red-500 text-center">Nenhum produto registrado.</p>
+  </ng-template>
+  </div>

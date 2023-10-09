@@ -19,6 +19,7 @@ export class FormComponent {
   onSubmit() {
     // Handle form submission here, e.g., send data to an API or perform other actions.
     console.log('Form submitted with data:', this.formData);
+    localStorage.setItem('products', JSON.stringify([this.formData]))
     
     this.formData = {
       name: '',
